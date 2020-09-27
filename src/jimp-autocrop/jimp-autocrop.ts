@@ -15,25 +15,21 @@ export async function cropCentreFromPath(
         img: Jimp,
         path?: string
     }>((resolve, reject) => {
-        try {
-            options = options ?? { ratio: { min: 1, max: 1 }}
-            options.ratio = options.ratio ?? { min: 1, max: 1 }
+        options = options ?? { ratio: { min: 1, max: 1 }}
+        options.ratio = options.ratio ?? { min: 1, max: 1 }
 
-            Jimp.read(inImgPath)
-            .then(inImg => {
-                const img = cropCentre(inImg, options.ratio.min, options.ratio.max)
-                
-                if (options.outImgPath) img.write(options.outImgPath)
+        Jimp.read(inImgPath)
+        .then(inImg => {
+            const img = cropCentre(inImg, options.ratio.min, options.ratio.max)
+            
+            if (options.outImgPath) img.write(options.outImgPath)
 
-                resolve({
-                    img: img,
-                    path: (options.outImgPath && fs.existsSync(options.outImgPath)) ? options.outImgPath : null
-                })
+            resolve({
+                img: img,
+                path: (options.outImgPath && fs.existsSync(options.outImgPath)) ? options.outImgPath : null
             })
-            .catch(err => reject(err))
-        } catch (error) {
-            reject(error)
-        }
+        })
+        .catch(err => reject(err))
     })
 }
 

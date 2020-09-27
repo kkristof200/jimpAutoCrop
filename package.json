@@ -21,6 +21,6 @@
     },
     "author": "Kristóf-Attila Kovács",
     "name": "jimp-autocrop",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "description": "auto crop centre of a jimp image based on min and max ratio (width/height)"
 }
