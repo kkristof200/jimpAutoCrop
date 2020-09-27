@@ -1,0 +1,1 @@
+export * from './jimp-autocrop/jimp-autocrop'
